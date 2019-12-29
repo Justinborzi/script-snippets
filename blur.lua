@@ -19,14 +19,14 @@ local function BlurMenu(panel, layers, density, alpha)
 end
 
 --Example Usage
-	frame = vgui.Create("DFrame")
-	frame:SetPos(-x + 2000, y)
-	frame:SetSize(w, h)
-	frame:MakePopup()
-	frame:ShowCloseButton(false)
-	frame:SetDraggable(false)
-	frame:SetTitle("")
-	frame:MoveTo(0, y, 1, 0, 0.6)
-	frame.Paint = function(self)
-		BlurMenu(self, 1, 6, 255)
-	end
+frame = vgui.Create("DFrame")
+frame:SetPos(-x + 2000, y)
+frame:SetSize(w, h)
+frame:MakePopup()
+frame:ShowCloseButton(false)
+frame:SetDraggable(false)
+frame:SetTitle("")
+frame:MoveTo(0, y, 1, 0, 0.6)
+frame.Paint = function(self)
+	BlurMenu(self, 1, 6, 255)
+end
