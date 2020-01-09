@@ -17,6 +17,13 @@ public class DevDisplay : MonoBehaviour
 
     void Start()
     {
+        if (GameObject.Find("Canvas") != null || GameObject.FindGameObjectWithTag("UI") != null)
+        {
+            devCanvas = GameObject.Find("Canvas");
+        } else {
+            devCanvas = devCanvas;
+        }
+    
         // Initialize Game Object
         GameObject fpsCounter = new GameObject();
         fpsCounter.transform.parent = devCanvas.transform;
