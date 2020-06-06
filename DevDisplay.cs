@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +10,7 @@ public class DevDisplay : MonoBehaviour
     public Canvas devCanvas;
     public Font devFont;
     public int sizeForFont = 20;
+    public Vector2 offset = new Vector2(-350f, 190f);
 
     Text text;
     RectTransform rectTransform;
@@ -19,11 +20,13 @@ public class DevDisplay : MonoBehaviour
     {
         if (GameObject.Find("Canvas") != null || GameObject.FindGameObjectWithTag("UI") != null)
         {
-            devCanvas = GameObject.Find("Canvas");
-        } else {
+            devCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        }
+        else
+        {
             devCanvas = devCanvas;
         }
-    
+
         // Initialize Game Object
         GameObject fpsCounter = new GameObject();
         fpsCounter.transform.parent = devCanvas.transform;
@@ -34,7 +37,7 @@ public class DevDisplay : MonoBehaviour
 
         // Text position
         rectTransform = text.GetComponent<RectTransform>();
-        rectTransform.localPosition = new Vector3(0, 0, 0);
+        rectTransform.localPosition = new Vector3(offset.x, offset.y, 0);
         rectTransform.sizeDelta = new Vector2(1200, 600);
     }
 
@@ -55,7 +58,7 @@ public class DevDisplay : MonoBehaviour
              "{7}",
 
 
-             Math.Round(fps), 
+             Math.Round(fps),
              msec,
              SystemInfo.graphicsDeviceName,
              SystemInfo.graphicsDeviceType.ToString(),
@@ -64,5 +67,7 @@ public class DevDisplay : MonoBehaviour
              SystemInfo.systemMemorySize.ToString(),
              SystemInfo.operatingSystem
          );
+
+        rectTransform.localPosition = new Vector3(offset.x, offset.y, 0);
     }
 }
